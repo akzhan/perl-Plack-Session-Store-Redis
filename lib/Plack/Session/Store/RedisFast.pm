@@ -110,6 +110,8 @@ __END__
 
 Plack::Session::Store::RedisFast - Redis session store.
 
+=head1 DESCRIPTION
+
 Default implementation of Redis handle is L<Redis::Fast>; otherwise L<Redis>.
 
 May be overriden through L</redis> or  L</builder> param.
@@ -142,33 +144,37 @@ its full interface.
 
 =head1 METHODS
 
+=head2 new
+
+    Plack::Session::Store::RedisFast->new( %params )>
+
+Parameters:
+
 =over 4
 
-=item B<new ( %params )>
-
-=item B<redis>
+=item redis
 
 A simple accessor for the Redis handle.
 
-=item B<builder>
+=item builder
 
 A simple builder for the Redis handle if L</redis> not set.
 
-=item B<inflate>
+=item inflate
 
 A simple serializer, JSON::XS->new->utf8->allow_nonref->encode
 or JSON->new->utf8->allow_nonref->encode by default.
 
-=item B<deflate>
+=item deflate
 
 A simple deserializer, JSON::XS->new->utf8->allow_nonref->decode
 or JSON->new->utf8->allow_nonref->decode by default.
 
-=item B<prefix>
+=item prefix
 
 A prefix for Redis session ids. 'Plack::Session::Store::RedisFast:' by default.
 
-=item B<expire>
+=item expire
 
 An expire for Redis sessions. L<Time::Seconds/ONE_MONTH> by default.
 

@@ -2,6 +2,8 @@
 
 Plack::Session::Store::RedisFast - Redis session store.
 
+# DESCRIPTION
+
 Default implementation of Redis handle is [Redis::Fast](https://metacpan.org/pod/Redis::Fast); otherwise [Redis](https://metacpan.org/pod/Redis).
 
 May be overriden through ["redis"](#redis) or  ["builder"](#builder) param.
@@ -34,30 +36,35 @@ its full interface.
 
 # METHODS
 
-- **new ( %params )**
-- **redis**
+## new
+
+    Plack::Session::Store::RedisFast->new( %params )>
+
+Parameters:
+
+- redis
 
     A simple accessor for the Redis handle.
 
-- **builder**
+- builder
 
     A simple builder for the Redis handle if ["redis"](#redis) not set.
 
-- **inflate**
+- inflate
 
     A simple serializer, JSON::XS->new->utf8->allow\_nonref->encode
     or JSON->new->utf8->allow\_nonref->encode by default.
 
-- **deflate**
+- deflate
 
     A simple deserializer, JSON::XS->new->utf8->allow\_nonref->decode
     or JSON->new->utf8->allow\_nonref->decode by default.
 
-- **prefix**
+- prefix
 
     A prefix for Redis session ids. 'Plack::Session::Store::RedisFast:' by default.
 
-- **expire**
+- expire
 
     An expire for Redis sessions. ["ONE\_MONTH" in Time::Seconds](https://metacpan.org/pod/Time::Seconds#ONE_MONTH) by default.
 
