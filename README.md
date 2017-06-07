@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/akzhan/perl-Plack-Session-Store-RedisFast.svg?branch=master)](https://travis-ci.org/akzhan/perl-Plack-Session-Store-RedisFast)
 [![codecov](https://codecov.io/gh/akzhan/perl-Plack-Session-Store-RedisFast/branch/master/graph/badge.svg)](https://codecov.io/gh/akzhan/perl-Plack-Session-Store-RedisFast)
-[![Cpan license](https://img.shields.io/cpan/l/Plack-Session-Store-RedisFast.svg)](https://metacpan.org/release/Plack-Session-Store-RedisFast)
-[![Cpan version](https://img.shields.io/cpan/v/Plack-Session-Store-RedisFast.svg)](https://metacpan.org/release/Plack-Session-Store-RedisFast)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/Plack-Session-Store-RedisFast.png)](http://cpants.charsbar.org/dist/overview/Plack-Session-Store-RedisFast)
 
 # NAME
 
@@ -13,7 +12,7 @@ Default implementation of Redis handle is [Redis::Fast](https://metacpan.org/pod
 
 May be overriden through ["redis"](#redis) or  ["builder"](#builder) param.
 
-Default implementation of serializer handle is [JSON::XS](https://metacpan.org/pod/JSON::XS); otherwise [JSON](https://metacpan.org/pod/JSON).
+Default implementation of serializer handle is [JSON::XS](https://metacpan.org/pod/JSON::XS); otherwise [Mojo::JSON](https://metacpan.org/pod/Mojo::JSON) or [JSON](https://metacpan.org/pod/JSON).
 
 May be overriden through ["inflate"](#inflate) and ["deflate"](#deflate) param.
 
@@ -43,7 +42,7 @@ its full interface.
 
 ## new
 
-    Plack::Session::Store::RedisFast->new( %params )>
+    Plack::Session::Store::RedisFast->new( %param );
 
 Parameters:
 
@@ -58,12 +57,12 @@ Parameters:
 - inflate
 
     A simple serializer, JSON::XS->new->utf8->allow\_nonref->encode
-    or JSON->new->utf8->allow\_nonref->encode by default.
+    or Mojo::JSON::encode\_json or JSON->new->utf8->allow\_nonref->encode by default.
 
 - deflate
 
     A simple deserializer, JSON::XS->new->utf8->allow\_nonref->decode
-    or JSON->new->utf8->allow\_nonref->decode by default.
+    or Mojo::JSON::decode\_json or JSON->new->utf8->allow\_nonref->decode by default.
 
 - prefix
 
