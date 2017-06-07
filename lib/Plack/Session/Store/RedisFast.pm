@@ -95,11 +95,13 @@ sub store {
         $self->prefix . $session_id => $data,
         ( defined( $self->expire ) ? ( EX => $self->expire ) : () ),
     );
+    1;
 }
 
 sub remove {
     my ( $self, $session_id ) = @_;
     $self->redis->del( $self->prefix . $session_id );
+    1;
 }
 
 1;
