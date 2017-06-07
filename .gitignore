@@ -1,0 +1,7 @@
+/perl-Plack-Session-Store-Redis-*
+/.build
+/_build*
+/Build
+MYMETA.*
+!META.json
+/.prove
