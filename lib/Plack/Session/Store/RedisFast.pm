@@ -51,9 +51,13 @@ sub _build_encoder {
         $instance = JSON::XS->new->utf8->allow_nonref;
         1;
     } or do {
+        require Plack::Session::Store::RedisFast::MojoJSON;
+        $instance = Plack::Session::Store::RedisFast::MojoJSON->new;
+      }
+      or do {
         require JSON;
         $instance = JSON->new->utf8->allow_nonref;
-    };
+      };
     $instance;
 }
 
@@ -116,7 +120,7 @@ Default implementation of Redis handle is L<Redis::Fast>; otherwise L<Redis>.
 
 May be overriden through L</redis> or  L</builder> param.
 
-Default implementation of serializer handle is L<JSON::XS>; otherwise L<JSON>.
+Default implementation of serializer handle is L<JSON::XS>; otherwise L<Mojo::JSON> or L<JSON>.
 
 May be overriden through L</inflate> and L</deflate> param.
 
@@ -146,7 +150,7 @@ its full interface.
 
 =head2 new
 
-    Plack::Session::Store::RedisFast->new( %params )>
+    Plack::Session::Store::RedisFast->new( %param );
 
 Parameters:
 
@@ -163,12 +167,12 @@ A simple builder for the Redis handle if L</redis> not set.
 =item inflate
 
 A simple serializer, JSON::XS->new->utf8->allow_nonref->encode
-or JSON->new->utf8->allow_nonref->encode by default.
+or Mojo::JSON::encode_json or JSON->new->utf8->allow_nonref->encode by default.
 
 =item deflate
 
 A simple deserializer, JSON::XS->new->utf8->allow_nonref->decode
-or JSON->new->utf8->allow_nonref->decode by default.
+or Mojo::JSON::decode_json or JSON->new->utf8->allow_nonref->decode by default.
 
 =item prefix
 
