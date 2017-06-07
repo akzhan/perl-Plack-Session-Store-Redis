@@ -1,4 +1,4 @@
-/perl-Plack-Session-Store-Redis-*
+/Plack-Session-Store-RedisFast-*
 /.build
 /_build*
 /Build

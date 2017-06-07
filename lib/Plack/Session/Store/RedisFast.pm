@@ -1,4 +1,4 @@
-package Plack::Session::Store::Redis;
+package Plack::Session::Store::RedisFast;
 
 use strict;
 use warnings;
@@ -106,15 +106,22 @@ __END__
 
 =encoding utf-8
 
-
 =head1 NAME
 
-Plack::Session::Store::Redis - Redis session store
+Plack::Session::Store::RedisFast - Redis session store.
+
+Default implementation of Redis handle is L<Redis::Fast>; otherwise L<Redis>.
+
+May be overriden through L</redis> or  L</builder> param.
+
+Default implementation of serializer handle is L<JSON::XS>; otherwise L<JSON>.
+
+May be overriden through L</inflate> and L</deflate> param.
 
 =head1 SYNOPSIS
 
   use Plack::Builder;
-  use Plack::Session::Store::Redis;
+  use Plack::Session::Store::RedisFast;
 
   my $app = sub {
       return [ 200, [ 'Content-Type' => 'text/plain' ], [ 'Hello Foo' ] ];
@@ -122,7 +129,7 @@ Plack::Session::Store::Redis - Redis session store
 
   builder {
       enable 'Session',
-          store => Plack::Session::Store::Redis->new;
+          store => Plack::Session::Store::RedisFast->new;
       $app;
   };
 
@@ -142,6 +149,28 @@ its full interface.
 =item B<redis>
 
 A simple accessor for the Redis handle.
+
+=item B<builder>
+
+A simple builder for the Redis handle if L</redis> not set.
+
+=item B<inflate>
+
+A simple serializer, JSON::XS->new->utf8->allow_nonref->encode
+or JSON->new->utf8->allow_nonref->encode by default.
+
+=item B<deflate>
+
+A simple deserializer, JSON::XS->new->utf8->allow_nonref->decode
+or JSON->new->utf8->allow_nonref->decode by default.
+
+=item B<prefix>
+
+A prefix for Redis session ids. 'Plack::Session::Store::RedisFast:' by default.
+
+=item B<expire>
+
+An expire for Redis sessions. L<Time::Seconds/ONE_MONTH> by default.
 
 =back
 

@@ -8,7 +8,7 @@ use Test::More;
 use Plack::Request;
 use Plack::Session;
 use Plack::Session::State;
-use Plack::Session::Store::Redis;
+use Plack::Session::Store::RedisFast;
 
 use t::lib::TestSession;
 
@@ -40,7 +40,7 @@ use t::lib::TestSession;
 }
 
 t::lib::TestSession::run_all_tests(
-    store  => Plack::Session::Store::Redis->new,
+    store  => Plack::Session::Store::RedisFast->new,
     state  => Plack::Session::State->new,
     env_cb => sub {
         open my $in, '<', \do { my $d };

@@ -1,5 +1,5 @@
 {
-   "abstract" : "Redis session store",
+   "abstract" : "Redis session store.",
    "author" : [
       "Akzhan Abdulin <akzhan.abdulin@gmail.com>"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : 2
    },
-   "name" : "Plack-Session-Store-Redis",
+   "name" : "Plack-Session-Store-RedisFast",
    "no_index" : {
       "directory" : [
          "eg",
@@ -50,12 +50,25 @@
       },
       "test" : {
          "requires" : {
+            "JSON::XS" : "3.03",
+            "Redis::Fast" : "0.20",
             "Test::More" : "0.96",
             "Test::Spec" : "0.51"
          }
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/akzhan/perl-Plack-Session-Store-RedisFast/issues"
+      },
+      "homepage" : "https://github.com/akzhan/perl-Plack-Session-Store-RedisFast",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/akzhan/perl-Plack-Session-Store-RedisFast.git",
+         "web" : "https://github.com/akzhan/perl-Plack-Session-Store-RedisFast"
+      }
+   },
    "version" : "0.01",
    "x_serialization_backend" : "Cpanel::JSON::XS version 3.023"
 }
