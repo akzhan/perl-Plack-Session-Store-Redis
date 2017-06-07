@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/akzhan/perl-Plack-Session-Store-RedisFast.svg?branch=master)](https://travis-ci.org/akzhan/perl-Plack-Session-Store-RedisFast)
+[![codecov](https://codecov.io/gh/akzhan/perl-Plack-Session-Store-RedisFast/branch/master/graph/badge.svg)](https://codecov.io/gh/akzhan/perl-Plack-Session-Store-RedisFast)
+[![Cpan license](https://img.shields.io/cpan/l/Plack-Session-Store-RedisFast.svg)](https://metacpan.org/release/Plack-Session-Store-RedisFast)
+[![Cpan version](https://img.shields.io/cpan/v/Plack-Session-Store-RedisFast.svg)](https://metacpan.org/release/Plack-Session-Store-RedisFast)
+
 # NAME
 
 Plack::Session::Store::RedisFast - Redis session store.

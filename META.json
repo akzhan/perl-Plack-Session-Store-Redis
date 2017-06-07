@@ -52,6 +52,7 @@
          "requires" : {
             "JSON::XS" : "3.03",
             "Redis::Fast" : "0.20",
+            "Test::Fatal" : "0",
             "Test::More" : "0.96",
             "Test::Spec" : "0.51"
          }
