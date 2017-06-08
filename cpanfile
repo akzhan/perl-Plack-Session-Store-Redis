@@ -14,5 +14,10 @@ on test => sub {
     requires 'Test::Spec', '0.51';
     requires 'Test::Fatal';
     requires 'Redis::Fast', '0.20';
+    requires 'JSON', '2.0';
+};
+
+on development => sub {
+    requires 'Redis';
     requires 'JSON::XS', '3.03';
 };
