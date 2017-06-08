@@ -51,8 +51,8 @@ sub _build_encoder {
         $instance = JSON::XS->new->utf8->allow_nonref;
         1;
     } or do {
-        require Plack::Session::Store::RedisFast::MojoJSON;
-        $instance = Plack::Session::Store::RedisFast::MojoJSON->new;
+        require Plack::Session::Store::RedisFast::Mojo::JSON;
+        $instance = Plack::Session::Store::RedisFast::Mojo::JSON->new;
       }
       or do {
         require JSON;

@@ -1,4 +1,4 @@
-package Plack::Session::Store::RedisFast::MojoJSON;
+package Plack::Session::Store::RedisFast::Mojo::JSON;
 
 use strict;
 use warnings;
