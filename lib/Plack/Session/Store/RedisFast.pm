@@ -22,13 +22,12 @@ sub new {
     $param{expire} = ONE_MONTH         unless exists $param{expire};
 
     unless ( $param{redis} ) {
-        my $builder = $param{builder} || \&_build_redis;
-        delete $param{builder};
-        $param{redis} = $builder->( $param{inflate}, $param{deflate} );
+        my $builder = ( delete $param{builder} ) || \&_build_redis;
+        $param{redis} = $builder->();
     }
 
     $param{encoder} ||=
-      _build_encoder( delete $param{inflate}, delete $param{deflate} );
+      _build_encoder( ( delete $param{inflate} ), ( delete $param{deflate} ) );
 
     $param{encoder} = $param{encoder}->new()
       unless ref( $param{encoder} );
