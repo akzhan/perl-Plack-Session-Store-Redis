@@ -11,7 +11,6 @@ requires 'warnings';
 
 on test => sub {
     requires 'Test::More', '0.96';
-    requires 'Test::Spec', '0.51';
     requires 'Test::Fatal';
     requires 'Redis::Fast', '0.20';
     requires 'JSON', '2.0';
@@ -20,4 +19,5 @@ on test => sub {
 on development => sub {
     requires 'Redis';
     requires 'JSON::XS', '3.03';
+    requires 'Mojo::JSON';
 };

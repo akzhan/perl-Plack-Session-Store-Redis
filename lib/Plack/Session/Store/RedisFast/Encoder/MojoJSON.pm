@@ -1,4 +1,4 @@
-package Plack::Session::Store::RedisFast::Mojo::JSON;
+package Plack::Session::Store::RedisFast::Encoder::MojoJSON;
 
 use strict;
 use warnings;
@@ -35,7 +35,7 @@ __END__
 
 =head1 NAME
 
-Plack::Session::Store::RedisFast::MojoJSON - Mojo::JSON adapte for Redis session store.
+Plack::Session::Store::RedisFast::MojoJSON - L<Mojo::JSON> adapter for Redis session store.
 
 =head1 DESCRIPTION
 
