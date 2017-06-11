@@ -221,9 +221,9 @@ An expire for Redis sessions. L<Time::Seconds/ONE_MONTH> by default.
 
     $store->each_session(sub {
         my ( $redis_instance, $redis_prefix, $session_id, $session ) = @_;
-        # call can be duplicated due to Redis L<https://redis.io/commands/scan> limitations.
-        # do something but not delete keys.
     });
+
+Enumerates all stored sessions using SCAN, see L<https://redis.io/commands/scan> for limitations.
 
 =head1 BUGS
 
