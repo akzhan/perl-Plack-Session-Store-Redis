@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/akzhan/perl-Plack-Session-Store-RedisFast.svg?branch=master)](https://travis-ci.org/akzhan/perl-Plack-Session-Store-RedisFast)
 [![codecov](https://codecov.io/gh/akzhan/perl-Plack-Session-Store-RedisFast/branch/master/graph/badge.svg)](https://codecov.io/gh/akzhan/perl-Plack-Session-Store-RedisFast)
-[![Kwalitee status](http://cpants.cpanauthors.org/dist/Plack-Session-Store-RedisFast.png)](http://cpants.charsbar.org/dist/overview/Plack-Session-Store-RedisFast)
 
 # NAME
 
@@ -56,13 +55,15 @@ Parameters:
 
 - inflate
 
-    A simple serializer, JSON::XS->new->utf8->allow\_nonref->encode
-    or Mojo::JSON::encode\_json or JSON->new->utf8->allow\_nonref->encode by default.
+    A simple serializer, requires ["deflate"](#deflate) param.
 
 - deflate
 
-    A simple deserializer, JSON::XS->new->utf8->allow\_nonref->decode
-    or Mojo::JSON::decode\_json or JSON->new->utf8->allow\_nonref->decode by default.
+    A simple deserializer, requires ["inflate"](#inflate) param.
+
+- encoder
+
+    A simple encoder (encode/decode implementation), class or instance. JSON/utf8 by default.
 
 - prefix
 
@@ -71,6 +72,14 @@ Parameters:
 - expire
 
     An expire for Redis sessions. ["ONE\_MONTH" in Time::Seconds](https://metacpan.org/pod/Time::Seconds#ONE_MONTH) by default.
+
+## each\_session
+
+    $store->each_session(sub {
+        my ( $redis_instance, $redis_prefix, $session_id, $session ) = @_;
+    });
+
+Enumerates all stored sessions using SCAN, see [https://redis.io/commands/scan](https://redis.io/commands/scan) for limitations.
 
 # BUGS
 

@@ -2,6 +2,8 @@ Revision history for perl-Plack-Session-Store-RedisFast
 
 {{$NEXT}}
 
+0.02  2017-06-11 17:12:09 MSK
+
         - each_session method introduced.
 
         - support for Mojo::JSON encoder added.

@@ -50,11 +50,10 @@
       },
       "test" : {
          "requires" : {
-            "JSON::XS" : "3.03",
+            "JSON" : "2.0",
             "Redis::Fast" : "0.20",
             "Test::Fatal" : "0",
-            "Test::More" : "0.96",
-            "Test::Spec" : "0.51"
+            "Test::More" : "0.96"
          }
       }
    },
@@ -70,7 +69,7 @@
          "web" : "https://github.com/akzhan/perl-Plack-Session-Store-RedisFast"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_serialization_backend" : "JSON::XS version 3.03"
 }
 
