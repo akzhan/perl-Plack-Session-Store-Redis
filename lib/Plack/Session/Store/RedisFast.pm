@@ -13,7 +13,7 @@ use parent 'Plack::Session::Store';
 
 use constant SESSIONS_PER_SCAN => 100;
 
-our $VERSION   = '0.02';
+our $VERSION   = '0.03';
 our $AUTHORITY = 'cpan:AKZHAN';
 
 sub new {
