@@ -9,7 +9,7 @@ Plack::Session::Store::RedisFast - Redis session store.
 
 Default implementation of Redis handle is [Redis::Fast](https://metacpan.org/pod/Redis::Fast); otherwise [Redis](https://metacpan.org/pod/Redis).
 
-May be overriden through ["redis"](#redis) or  ["builder"](#builder) param.
+May be overriden through ["redis"](#redis) param.
 
 Default implementation of serializer handle is [JSON::XS](https://metacpan.org/pod/JSON::XS); otherwise [Mojo::JSON](https://metacpan.org/pod/Mojo::JSON) or [JSON](https://metacpan.org/pod/JSON).
 
@@ -48,10 +48,6 @@ Parameters:
 - redis
 
     A simple accessor for the Redis handle.
-
-- builder
-
-    A simple builder for the Redis handle if ["redis"](#redis) not set.
 
 - inflate
 

@@ -2,6 +2,8 @@ Revision history for perl-Plack-Session-Store-RedisFast
 
 {{$NEXT}}
 
+        - builder param replaced with redis one.
+
 0.03  2017-06-11 17:21:33 MSK
 
         - minor update.

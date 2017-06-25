@@ -21,9 +21,12 @@ sub new {
     $param{prefix} = __PACKAGE__ . ':' unless defined $param{prefix};
     $param{expire} = ONE_MONTH         unless exists $param{expire};
 
-    unless ( $param{redis} ) {
-        my $builder = ( delete $param{builder} ) || \&_build_redis;
-        $param{redis} = $builder->();
+    unless ( defined $param{redis} ) {
+        $param{redis} = \&_build_redis;
+    }
+
+    if ( ref( $param{redis} ) eq 'CODE' ) {
+        $param{redis} = $param{redis}->();
     }
 
     $param{encoder} ||=
@@ -148,7 +151,7 @@ Plack::Session::Store::RedisFast - Redis session store.
 
 Default implementation of Redis handle is L<Redis::Fast>; otherwise L<Redis>.
 
-May be overriden through L</redis> or  L</builder> param.
+May be overriden through L</redis> param.
 
 Default implementation of serializer handle is L<JSON::XS>; otherwise L<Mojo::JSON> or L<JSON>.
 
@@ -189,10 +192,6 @@ Parameters:
 =item redis
 
 A simple accessor for the Redis handle.
-
-=item builder
-
-A simple builder for the Redis handle if L</redis> not set.
 
 =item inflate
 
