@@ -6,7 +6,7 @@ use warnings;
 use 5.008_005;
 
 use Carp qw( carp );
-use Plack::Util::Accessor qw( prefix redis encoder expire );
+use Plack::Util::Accessor qw( prefix redis encoder expires );
 use Time::Seconds qw( ONE_MONTH );
 
 use parent 'Plack::Session::Store';
@@ -19,7 +19,12 @@ our $AUTHORITY = 'cpan:AKZHAN';
 sub new {
     my ( $class, %param ) = @_;
     $param{prefix} = __PACKAGE__ . ':' unless defined $param{prefix};
-    $param{expire} = ONE_MONTH         unless exists $param{expire};
+    if ( exists $param{expire} ) {
+        warn __PACKAGE__
+          . ": DEPRECATED expire. Should be replaced with expires.";
+        $param{expires} = delete $param{expire};
+    }
+    $param{expires} = ONE_MONTH unless exists $param{expires};
 
     unless ( defined $param{redis} ) {
         $param{redis} = \&_build_redis;
@@ -90,7 +95,7 @@ sub store {
     my $data = $self->encoder->encode($session);
     $self->redis->set(
         $self->prefix . $session_id => $data,
-        ( defined( $self->expire ) ? ( EX => $self->expire ) : () ),
+        ( defined( $self->expires ) ? ( EX => $self->expires ) : () ),
     );
     1;
 }
@@ -209,9 +214,9 @@ A simple encoder (encode/decode implementation), class or instance. JSON/utf8 by
 
 A prefix for Redis session ids. 'Plack::Session::Store::RedisFast:' by default.
 
-=item expire
+=item expires
 
-An expire for Redis sessions. L<Time::Seconds/ONE_MONTH> by default.
+An expires for Redis sessions. L<Time::Seconds/ONE_MONTH> by default.
 
 =back
 
