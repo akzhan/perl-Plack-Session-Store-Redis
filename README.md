@@ -65,9 +65,9 @@ Parameters:
 
     A prefix for Redis session ids. 'Plack::Session::Store::RedisFast:' by default.
 
-- expire
+- expires
 
-    An expire for Redis sessions. ["ONE\_MONTH" in Time::Seconds](https://metacpan.org/pod/Time::Seconds#ONE_MONTH) by default.
+    An expires for Redis sessions. ["ONE\_MONTH" in Time::Seconds](https://metacpan.org/pod/Time::Seconds#ONE_MONTH) by default.
 
 ## each\_session
 
